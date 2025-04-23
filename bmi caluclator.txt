@@ -1,0 +1,15 @@
+weight_of_person=float(input("Enter your weight in kg: "))
+Height_of_person=float(input("Enter your height in meters: "))
+height_in_meters=(Height_of_person)/100
+BMI_value=(weight_of_person) / (height_in_meters **2)
+print(BMI_value)
+if (BMI_value < 16):
+    print("The person is severely underweight"),BMI_value
+elif(BMI_value >= 16 and BMI_value < 18.5):
+    print("The person is Underweight"),BMI_value
+elif(BMI_value >=18.5 and BMI_value <24):
+    print("The person is healthy "),BMI_value
+elif(BMI_value>=25 and BMI_value <30):
+    print("The person is overweight"),BMI_value
+elif(BMI_value>=30):
+    print("The person is obese"),BMI_value

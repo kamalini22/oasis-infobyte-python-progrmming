@@ -1,0 +1,55 @@
+import datetime
+import webbrowser
+
+def speak(text):
+
+    print(f"Assistant: {text}")
+
+def get_time():
+
+    now = datetime.datetime.now()
+    return now.strftime("The current time is %I:%M %p")
+
+def get_date():
+
+    today = datetime.datetime.today()
+    return today.strftime("Today is %A, %B %d, %Y")
+
+def search_web(query):
+
+    speak(f"Searching for '{query}' on Google...")
+    url = f"https://www.google.com/search?q={query}"
+    webbrowser.open(url)
+def handle_command(command):
+
+    command = command.lower()
+
+    if "hello" in command:
+        speak("Hello! How can I help you?")
+    elif "time" in command:
+        speak(get_time())
+    elif "date" in command:
+        speak(get_date())
+    elif "search" in command:
+        query = command.replace("search", "").strip()
+        if query:
+            search_web(query)
+        else:
+            speak("Please type what you'd like me to search for.")
+    elif command in ["exit", "stop", "bye", "quit"]:
+        speak("Goodbye! Have a great day.")
+        return False
+    else:
+        speak("Sorry, I didn't understand that.")
+    return True
+def main():
+    
+    speak("Welcome! Your assistant is ready. Type a command.")
+    active = True
+    while active:
+        command = input("You: ")
+        if command.strip():
+            active = handle_command(command)
+
+if __name__ == "__main__":
+    main()
